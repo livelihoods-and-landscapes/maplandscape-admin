@@ -81,7 +81,7 @@ shinyUI(
           tags$div(
             class="d-grid gap-2",
             tags$a(
-              class = "btn btn-primary action-button",
+              class = "btn btn-primary",
               "forgot password",
               target = "_blank",
               href = paste0("https://", qfieldcloud_url, "/accounts/password/reset/")
@@ -133,7 +133,7 @@ shinyUI(
           4,
           selectInput(
             "action_type",
-            "action_type",
+            "Action type:",
             choices = c(
               "add",
               "delete",
@@ -144,7 +144,7 @@ shinyUI(
             condition = "input.action_type == 'add' | input.action_type == 'update'",
             selectInput(
               "user_role",
-              "user role",
+              "User role:",
               choices = c(
                 "reporter",
                 "reader",
@@ -163,7 +163,7 @@ shinyUI(
           4,
           selectInput(
             "project_collaborators",
-            "Project collaborators",
+            "Project collaborators:",
             choices = "",
             multiple = TRUE
           )
@@ -172,7 +172,7 @@ shinyUI(
           4,
           selectInput(
             "potential_users",
-            "Available collaborators",
+            "Available collaborators:",
             choices = "",
             multiple = TRUE
           )

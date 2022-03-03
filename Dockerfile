@@ -13,7 +13,7 @@ COPY /app/ui.R /root/app/
 COPY /app/config.yml /root/app/
 COPY /app/global.R /root/app/
 COPY /app/www/* /root/app/www/
-COPY /app/R/* /root/app/R/
+
 
 EXPOSE 3838
 

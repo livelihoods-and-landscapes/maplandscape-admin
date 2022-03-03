@@ -71,7 +71,7 @@ shinyServer(function(input, output, session) {
         tags$div(
           class="d-grid gap-2",
           tags$a(
-            class = "btn btn-primary action-button",
+            class = "btn btn-primary",
             "change password",
             target = "_blank",
             href = paste0("https://", qfieldcloud_url, "/accounts/password/change/")
