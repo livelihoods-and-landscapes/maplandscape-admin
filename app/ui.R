@@ -157,7 +157,8 @@ shinyUI(
           actionButton(
             "apply_action",
             "apply changes"
-          )
+          ),
+          uiOutput("invite_user")
         ),
         column(
           4,

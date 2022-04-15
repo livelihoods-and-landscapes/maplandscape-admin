@@ -108,7 +108,7 @@ shinyServer(function(input, output, session) {
     if ("data.frame" %in% class(users_projects)) {
       tryCatch(
         error = function(cnd) {
-          showNotification("Could not admin / manager projects.", type = "error")
+          showNotification("Could not load admin / manager projects.", type = "error")
         },
         {
           manager_projects <- users_projects %>%
@@ -310,6 +310,19 @@ shinyServer(function(input, output, session) {
         showNotification("Could not load project collaborators and QFieldCloud users.", type = "error")
       },
       {
+        # invite users
+        output$invite_user <- renderUI({
+          tags$div(
+            class="d-grid gap-2 mt-2",
+            tags$a(
+              class = "btn btn-primary",
+              "invite user",
+              target = "_blank",
+              href = paste0("https://", qfieldcloud_url, "/invitations/send-invite/")
+            )
+          )
+        })
+        
         # get collaborators
         project_id <- app_data$manager_projects %>%
           dplyr::filter(name == input$manager_projects) %>%

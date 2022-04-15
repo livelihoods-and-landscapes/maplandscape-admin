@@ -415,8 +415,8 @@
       "RemoteRepo": "qfieldcloudR",
       "RemoteUsername": "livelihoods-and-landscapes",
       "RemoteRef": "HEAD",
-      "RemoteSha": "d7d234e162bf8209ff89d348c2b8951f807d1376",
-      "Hash": "73d9cf38646c4fe80e16f96bae60f2c9",
+      "RemoteSha": "5b930e13e6be59194476569a742426b9b15fb835",
+      "Hash": "3f7824b54f19db1df1cc816bff700dde",
       "Requirements": [
         "httr",
         "xfun"
@@ -496,6 +496,26 @@
       "Repository": "CRAN",
       "Hash": "947e4e02a79effa5d512473e10f41797",
       "Requirements": []
+    },
+    "stringi": {
+      "Package": "stringi",
+      "Version": "1.7.6",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "bba431031d30789535745a9627ac9271",
+      "Requirements": []
+    },
+    "stringr": {
+      "Package": "stringr",
+      "Version": "1.4.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "0759e6b6c0957edb1311028a49a35e76",
+      "Requirements": [
+        "glue",
+        "magrittr",
+        "stringi"
+      ]
     },
     "sys": {
       "Package": "sys",
