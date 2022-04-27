@@ -131,7 +131,7 @@ shinyServer(function(input, output, session) {
       )
     }
 
-    if (!is.null(app_data$manager_projects) & nrow(app_data$manager_projects) > 0) {
+    # if (!is.null(app_data$manager_projects) & nrow(app_data$manager_projects) > 0) {
       choices <- try(app_data$manager_projects$name)
       if (!("try-error" %in% class(choices))) {
         updateSelectInput(
@@ -140,9 +140,9 @@ shinyServer(function(input, output, session) {
           choices = choices
         )
       }
-    }
+    # }
 
-    if (!is.null(app_data$other_projects) & nrow(app_data$other_projects) > 0) {
+    # if (!is.null(app_data$other_projects) & nrow(app_data$other_projects) > 0) {
       choices <- try(app_data$other_projects$name)
       if (!("try-error" %in% class(choices))) {
         updateSelectInput(
@@ -151,7 +151,7 @@ shinyServer(function(input, output, session) {
           choices = choices
         )
       }
-    }
+    # }
   })
 
   # Selected project --------------------------------------------------------
