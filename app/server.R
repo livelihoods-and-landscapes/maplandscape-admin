@@ -96,62 +96,44 @@ shinyServer(function(input, output, session) {
   # select one layer as active layer from S3 GeoPackages
   observe({
     req(app_data$token)
-
-    # get user's projects
-    if (!is.null(app_data$token)) {
-      users_projects <- qfieldcloudR::get_qfieldcloud_projects(
-        app_data$token,
-        qfieldcloud_url
-      )
-    }
-
-    if ("data.frame" %in% class(users_projects)) {
-      tryCatch(
-        error = function(cnd) {
-          showNotification("Could not load admin / manager projects.", type = "error")
-        },
-        {
-          manager_projects <- users_projects %>%
-            dplyr::filter(user_role == "admin" | user_role == "manager")
-
-          app_data$manager_projects <- manager_projects
-        }
-      )
-
-      tryCatch(
-        error = function(cnd) {
-          showNotification("Could not load projects.", type = "error")
-        },
-        {
-          other_projects <- users_projects %>%
-            dplyr::filter(user_role != "admin" & user_role != "manager")
-
-          app_data$other_projects <- other_projects
-        }
-      )
-    }
-
-    # if (!is.null(app_data$manager_projects) & nrow(app_data$manager_projects) > 0) {
-      choices <- try(app_data$manager_projects$name)
-      if (!("try-error" %in% class(choices))) {
+ 
+    
+    tryCatch(
+      error = function(cnd) {
+        showNotification("Could not load projects.", type = "error")
+      },
+      {
+        
+        users_projects <- qfieldcloudR::get_qfieldcloud_projects(
+          app_data$token,
+          qfieldcloud_url
+        )
+        
+        manager_projects <- users_projects %>%
+          dplyr::filter(user_role == "admin" | user_role == "manager")
+        
+        app_data$manager_projects <- manager_projects
+        
+        other_projects <- users_projects %>%
+          dplyr::filter(user_role != "admin" & user_role != "manager")
+        
+        app_data$other_projects <- other_projects
+        
         updateSelectInput(
           session,
           "manager_projects",
-          choices = choices
+          choices = app_data$manager_projects$name
         )
-      }
-    # }
-
-    # if (!is.null(app_data$other_projects) & nrow(app_data$other_projects) > 0) {
-      choices <- try(app_data$other_projects$name)
-      if (!("try-error" %in% class(choices))) {
+      
         updateSelectInput(
           session,
           "other_projects",
-          choices = choices
+          choices = app_data$other_projects$name
         )
+        
       }
-    # }
+    )
+    
   })
 
   # Selected project --------------------------------------------------------
